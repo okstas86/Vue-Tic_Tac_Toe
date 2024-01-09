@@ -1,5 +1,5 @@
 <template>
-	<li>
+	<li :class="!isActive ? 'active' : undefined">
 		<span class="player">
 			<span v-if="!isEditing" class="player-name">{{ playerName }}</span>
 			<input v-else type="text" required v-model="playerName" />
@@ -21,6 +21,10 @@ const props = defineProps({
 		type: String,
 		requared: true,
 	},
+	isActive: {
+		type: Boolean,
+		requared: true,
+	},
 })
 
 let isEditing = ref(false)
@@ -29,4 +33,5 @@ let playerName = props.name
 function handleEditClick() {
 	isEditing.value = !isEditing.value
 }
+//
 </script>

@@ -13,7 +13,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, defineEmits } from 'vue'
+const emit = defineEmits(['changeActivePlayer'])
+
+const props = defineProps({})
+const activePlayer = ref('')
 
 const initialGameboard = ref([
 	[null, null, null],
@@ -24,6 +28,9 @@ const initialGameboard = ref([
 const gameBoard = ref(initialGameboard)
 
 function handleSelectSquere(rowIndex, colIndex) {
-	gameBoard.value[rowIndex][colIndex] = 'X'
+	activePlayer.value = activePlayer.value === 'X' ? 'O' : 'X'
+
+	gameBoard.value[rowIndex][colIndex] = activePlayer.value
+	emit('changeActivePlayer', activePlayer.value)
 }
 </script>
