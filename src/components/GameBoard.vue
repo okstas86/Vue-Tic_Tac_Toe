@@ -18,7 +18,7 @@ const emit = defineEmits(['changeActivePlayer'])
 
 const props = defineProps({})
 const activePlayer = ref('')
-
+const dataPlayers = ref([])
 const initialGameboard = ref([
 	[null, null, null],
 	[null, null, null],
@@ -29,8 +29,8 @@ const gameBoard = ref(initialGameboard)
 
 function handleSelectSquere(rowIndex, colIndex) {
 	activePlayer.value = activePlayer.value === 'X' ? 'O' : 'X'
-
 	gameBoard.value[rowIndex][colIndex] = activePlayer.value
-	emit('changeActivePlayer', activePlayer.value)
+
+	emit('changeActivePlayer', activePlayer.value, rowIndex, colIndex)
 }
 </script>
