@@ -34,6 +34,12 @@ function handleSelectSquere(rowIndex, colIndex) {
 	activePlayer.value = activePlayer.value === 'X' ? 'O' : 'X'
 	gameBoard.value[rowIndex][colIndex] = activePlayer.value
 
-	emit('changeActivePlayer', activePlayer.value, rowIndex, colIndex)
+	emit(
+		'changeActivePlayer',
+		activePlayer.value,
+		rowIndex,
+		colIndex,
+		gameBoard.value
+	)
 }
 </script>
