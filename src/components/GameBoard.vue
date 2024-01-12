@@ -3,7 +3,10 @@
 		<li v-for="(row, rowIndex) in initialGameboard" :key="rowIndex">
 			<ol>
 				<li v-for="(playerSymbol, colIndex) in row" :key="colIndex">
-					<button @click="() => handleSelectSquere(rowIndex, colIndex)">
+					<button
+						@click="() => handleSelectSquere(rowIndex, colIndex)"
+						:disabled="playerSymbol !== null"
+					>
 						{{ playerSymbol }}
 					</button>
 				</li>
